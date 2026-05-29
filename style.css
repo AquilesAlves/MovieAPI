@@ -10,10 +10,41 @@ body{
 
 
 .navbar{
+    display: flex;
+    justify-content: space-between;
     background-color: #0f172a;
     padding: 12px 3%;
 }
 
+.navbar #inputPesquisa{
+
+}
+
 .titulo{
     color: #fff;
+}
+
+.filmeLista{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+li{
+    position: relative;
+    color: white
+
+}
+
+.capaFilme{
+    width: 200px;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.nomeFilme{
+    position: absolute;
+    bottom: 0;
+    color: white;
 }
