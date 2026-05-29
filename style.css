@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #020617;
+}
+
+
+.navbar{
+    background-color: #0f172a;
+    padding: 12px 3%;
+}
+
+.titulo{
+    color: #fff;
+}
