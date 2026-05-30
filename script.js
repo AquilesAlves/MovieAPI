@@ -44,6 +44,7 @@ inputPesquisa.addEventListener('keydown', enviaPesquisa)
 btnPesquisa.addEventListener('click', enviaPesquisa)
 
 
-// 38d482
+// 7f4c27a86c1852558407558b1b0863f9 tmdb
+// 38d482 omdb
 // https://www.youtube.com/watch?v=1VjdxCTBfUI
 // https://www.youtube.com/watch?v=ZxZy4LhXlE0
