@@ -2,47 +2,60 @@ const inputPesquisa = document.querySelector('#inputPesquisa')
 const btnPesquisa = document.querySelector('.btnPesquisa')
 let filmeLista = document.querySelector('.filmeLista')
 
+const api_key = '7f4c27a86c1852558407558b1b0863f9'
 
-async function carregaFilme(pesquisa) {
-    const URL_API = `http://www.omdbapi.com/?s=${pesquisa}&page=1&apikey=38d482`
+async function exibe(URL_API) {
+    
     const resposta = await fetch(`${URL_API}`)
     const dados = await resposta.json()
-    //console.log(dados.Search)
+    console.log(dados.results)
 
-
-    
-    dados.Search.forEach(function(filme){
+    function renderFilme(filme) {
         
         const li = document.createElement('li')
         li.innerHTML = `
-            <img src=" ${filme.Poster} " class='capaFilme'>
-            <p class="nomeFilme">  ${filme.Title}  </p>
+            <img src=" https://image.tmdb.org/t/p/w500${filme.poster_path} " class='capaFilme'>
+            <p class="nomeFilme">  ${filme.title}  </p>
         `
         filmeLista.appendChild(li)
-        
-
-    });
+    }
+    dados.results.forEach(renderFilme)
 }
 
+async function carregaFilme() {
+    const URL_API = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}`  
+    exibe(URL_API)
+}
+carregaFilme()
 
+
+
+async function buscaFilme(pesquisa) {
+    const URL_API = `https://api.themoviedb.org/3/search/movie?query=${pesquisa}&api_key=${api_key}`
+    exibe(URL_API)
+}
+
+let timer
+let pesquisa
 function enviaPesquisa(evento) {
-    if (evento.key && evento.key !== 'Enter') return
-
-    filmeLista.innerHTML = ''
-
-    const pesquisa = inputPesquisa.value
-    carregaFilme(pesquisa)
-    //console.log(pesquisa)        
+    clearTimeout(timer)
     
-}
+    timer = setTimeout(() => {
+        filmeLista.innerHTML = ''
+        pesquisa = inputPesquisa.value
 
-carregaFilme('star')
-carregaFilme('harry')
+        if (pesquisa == '') {
+            carregaFilme()
+            return
+        }
+
+        buscaFilme(pesquisa)
+    }, 500);
+}
 
 
 inputPesquisa.addEventListener('keydown', enviaPesquisa)
 btnPesquisa.addEventListener('click', enviaPesquisa)
-
 
 // 7f4c27a86c1852558407558b1b0863f9 tmdb
 // 38d482 omdb
