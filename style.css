@@ -1,50 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body{
-    background-color: #020617;
+    
+    background: linear-gradient(#252525, #1a1a1a);
+
+}
+
+.container{
+    margin: 0 auto;
+    padding: 10px;
 }
 
 
 .navbar{
     display: flex;
     justify-content: space-between;
-    background-color: #0f172a;
-    padding: 12px 3%;
-}
-
-.navbar #inputPesquisa{
-
+    background-color: #252525;
+    padding: 16px 24px;
+    border-bottom: 1px solid #3a3a3a;
+    box-shadow: 0 0 55px rgb(0, 0, 0);
 }
 
 .titulo{
-    color: #fff;
+    color: #ffffffee;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
+
+.pesquisa{
+    display: flex;
+    border: 2px solid #3a3a3a;
+    border-radius: 20px;
+    background-color: #252525;
+
+}
+
+#inputPesquisa{
+    background-color: #252525;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    padding: 0 15px;
+    color: #ffffffee;
+    outline: none;
+}
+#inputPesquisa::placeholder{
+    color: #ffffff86;
+
+}
+
+.btnPesquisa{
+    background: transparent;
+    border: transparent;
+    width: 35px;
+    border-radius: 50%;
+    color: #ffffff86;
+    cursor: pointer;
+    
+}
+
 
 .filmeLista{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
+    padding: 10px 3%;
 }
 
 li{
+    list-style: none;
     position: relative;
-    color: white
+    border-radius: 10px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: transform 0.2s, border-color 0.2s;
+
+}
+
+li:hover {
+    transform: scale(1.01);
+    border-color: #666565;
 
 }
 
 .capaFilme{
-    width: 200px;
-    height: 330px;
+    width: 230px;
+    height: 400px;
     object-fit: cover;
     border-radius: 10px;
+    
+}
+
+.infos{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px 10px 10px;
+    background: linear-gradient(transparent, #000000);
+    border-radius: 10px;    
+    font-size: 14px;
+    color: white;
 }
 
 .nomeFilme{
-    position: absolute;
-    bottom: 0;
-    color: white;
+    margin-bottom: -8px;
+}
+
+.avaliacao{
+    font-size: 20px;
+    color: #dfdf3f;
+
 }

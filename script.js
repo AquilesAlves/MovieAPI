@@ -12,15 +12,36 @@ async function exibe(URL_API) {
 
     function renderFilme(filme) {
         
+        if (!filme.poster_path) return
         const li = document.createElement('li')
         li.innerHTML = `
             <img src=" https://image.tmdb.org/t/p/w500${filme.poster_path} " class='capaFilme'>
-            <p class="nomeFilme">  ${filme.title}  </p>
+            <div class="infos">
+                <p class="nomeFilme">  ${filme.title}  </p>
+                <p class="avaliacao">${estrelas(filme.vote_average)}</p>
+            </div>
         `
+
+        
         filmeLista.appendChild(li)
     }
     dados.results.forEach(renderFilme)
 }
+
+function estrelas(vote_average) {
+    let nota = Math.round(vote_average/2)
+
+    let resultado = ''
+    for (let i = 1; i <= 5; i++) {
+        if (i <= nota) {
+            resultado += '★'
+        } else {
+            resultado += '☆'
+        }
+    }
+    return resultado
+}
+
 
 async function carregaFilme() {
     const URL_API = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}`  
