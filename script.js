@@ -1,5 +1,4 @@
 const inputPesquisa = document.querySelector('#inputPesquisa')
-const btnPesquisa = document.querySelector('.btnPesquisa')
 let filmeLista = document.querySelector('.filmeLista')
 
 const api_key = '7f4c27a86c1852558407558b1b0863f9'
@@ -9,7 +8,11 @@ async function exibe(URL_API) {
     const resposta = await fetch(`${URL_API}`)
     const dados = await resposta.json()
     console.log(dados.results)
-
+    
+    if (dados.results.length === 0) {
+        filmeLista.innerHTML = '<h3 class="vazio">Nenhum filme encontrado :( </h3>'
+        return
+    }
     function renderFilme(filme) {
         
         if (!filme.poster_path) return
@@ -19,6 +22,7 @@ async function exibe(URL_API) {
             <div class="infos">
                 <p class="nomeFilme">  ${filme.title}  </p>
                 <p class="avaliacao">${estrelas(filme.vote_average)}</p>
+                <p class="descricao">${filme.overview}</p>
             </div>
         `
 
@@ -76,7 +80,6 @@ function enviaPesquisa(evento) {
 
 
 inputPesquisa.addEventListener('keydown', enviaPesquisa)
-btnPesquisa.addEventListener('click', enviaPesquisa)
 
 // 7f4c27a86c1852558407558b1b0863f9 tmdb
 // 38d482 omdb

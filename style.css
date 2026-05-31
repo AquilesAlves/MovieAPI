@@ -8,7 +8,7 @@
 }
 
 body{
-    
+    min-height: 640px;
     background: linear-gradient(#252525, #1a1a1a);
 
 }
@@ -41,7 +41,7 @@ body{
     border: 2px solid #3a3a3a;
     border-radius: 20px;
     background-color: #252525;
-
+    align-items: center;
 }
 
 #inputPesquisa{
@@ -52,22 +52,30 @@ body{
     padding: 0 15px;
     color: #ffffffee;
     outline: none;
+    
 }
 #inputPesquisa::placeholder{
     color: #ffffff86;
 
 }
 
-.btnPesquisa{
+label i{
     background: transparent;
     border: transparent;
     width: 35px;
     border-radius: 50%;
     color: #ffffff86;
     cursor: pointer;
+    outline: none;
+   
     
 }
 
+.vazio{
+    margin: 200px;
+    font-size: 25px;
+    color: #ffffffee;
+}
 
 .filmeLista{
     display: flex;
@@ -78,6 +86,7 @@ body{
 }
 
 li{
+    height: 404px;
     list-style: none;
     position: relative;
     border-radius: 10px;
@@ -111,6 +120,7 @@ li:hover {
     border-radius: 10px;    
     font-size: 14px;
     color: white;
+    transition: transform 0.3s
 }
 
 .nomeFilme{
@@ -121,4 +131,14 @@ li:hover {
     font-size: 20px;
     color: #dfdf3f;
 
+}
+
+.descricao {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
+}
+
+li:hover .descricao {
+    max-height: 100px;
 }
